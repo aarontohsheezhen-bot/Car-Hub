@@ -88,7 +88,13 @@ function tick(){const d=new Date();document.getElementById('clock').textContent=
 tick();setInterval(tick,1000);
 let playing=true;function togglePlay(){playing=!playing;document.getElementById('play').textContent=playing?'Ⅱ':'▶';document.getElementById('playing').textContent=playing?'PLAYING':'PAUSED';document.getElementById('progress').style.width=playing?'36%':'36%'}
 function skip(dir){document.getElementById('notice').textContent=dir<0?'Previous track action previewed.':'Next track action previewed.'}
-function openMap(which){const url=which==='waze'?'https://www.waze.com/ul':'https://maps.google.com/';window.open(url,'_blank');}
+function openMap(which) {
+  const appUrl = which === 'waze'
+    ? 'waze://'
+    : 'comgooglemaps://';
+
+  window.location.href = appUrl;
+}
 function toast(msg){document.getElementById('notice').textContent=msg}
 </script>
 </body>
